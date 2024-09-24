@@ -24,3 +24,15 @@ def test_set_prices_multiplying_works():
 
     #
     assert expected == result
+
+def test_set_prices_multiplying_works_with_3():
+    #
+    prices = [10, 30, 20]
+    a = 3
+    expected = [30, 60, 90]
+
+    #
+    result = set_prices(prices, a)
+
+    #
+    assert expected == result
