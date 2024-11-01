@@ -27,6 +27,9 @@ unique, otherwise code will result in undefined behaviour.
 """
 dict_comprehend = {number: "duppa" for number in numbers}
 
+
+nowa = list()
+nowa.append(2)
 """
 List comprehension with two `for` loops, this is not recomended, as it is hard to read, even harder
 to debug and the product of such comprehension can be achieved faster (check `itertools` module).
