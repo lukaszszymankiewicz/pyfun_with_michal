@@ -14,7 +14,6 @@ def is_even(number):
 
 
 result = list(filter(is_even, numbers))
-# print(result)
 
 
 ################
@@ -28,9 +27,6 @@ def mulitply_by_three(number):
 
 result = map(mulitply_by_three, numbers)
 
-# print(next(result))
-
-
 ################
 # ZIP EXAMPLES #
 ################
@@ -40,4 +36,43 @@ letters = ["a", "b", "c", "d", "e", "f"]
 
 result = dict(zip(letters, numbers))
 
-print(result)
+
+##############
+# ASSIGMENTS #
+##############
+
+
+new_numbers = [0.0, 1, 1.0, 2, "a", 3]
+
+"""
+a) using `new_numbers` list write filter to filter **out** every string and
+float number saving only integers there
+
+result should look like this: `[1, 2, 3]`
+"""
+
+new_letters = ["a", "b", "c"]
+"""
+b) using `new_numbers` list write map to change letters to big ones
+
+result should look like this: `["A", "B", "C"]`
+"""
+
+earns = [100, 200, 300]
+costs = [50, 100, 200]
+
+"""
+c) using `earns` and `costs` lists write for loop using `zip` to calculate
+profit for each value present.
+
+Profit is money earned minus costs (earn - cost)
+
+result should look like this: `[50, 100, 100]`
+"""
+
+"""
+hint try to use such loop:
+
+for (...) in zip(earns, costs):
+    (...)
+"""
