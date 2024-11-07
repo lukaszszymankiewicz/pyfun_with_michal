@@ -53,13 +53,18 @@ a) using `numbers` list write list comprehension which will float version of eac
 
 result should look like this: `[1.0, 2.0, 3.0, 4.0, 5.0, 6.0]`
 """
+float_numbers = [float(number) for number in numbers]
+print(float_numbers)
 
 """
 b) using `numbers` list write dict comprehension which will have key being each number multiplied by
 3 and each value being number multiplied by 5
 
+
 result should look like this: `{3:5, 6:10, 9:15, 12:20, 15:25, 18:30}`
 """
+numbers_dict = {number * 3: number * 5 for number in numbers}
+print(numbers_dict)
 
 """
 c) using `numbers` list write list comprehension which will have the same numbers but in the reverse
@@ -67,3 +72,5 @@ order
 
 result should look like this: `[6, 5, 4, 3, 2, 1]`
 """
+unocard_numbers = [number for number in reversed(numbers)]
+print(unocard_numbers)
