@@ -16,8 +16,10 @@ value = card.split("_")[1]
 type = card.split("_")[0]
 
 """CLASS IMPLEMENTATION"""
+
+
 class ClassCard:
-    def __init__(self, value_to_set: int, color_to_set:str):
+    def __init__(self, value_to_set: int, color_to_set: str):
 
         if value_to_set not in values:
             raise ValueError()
@@ -27,9 +29,14 @@ class ClassCard:
             raise ValueError()
         self.color = color_to_set
 
-
         if value_to_set == "as":
-            self.point = 1  # TODO: or 11
+            """
+            TODO (ASSIGNEMENT 1):
+                - how to properly set points to ace card? It can be 1 or 11
+                  depending on the overall hand point.
+                - maybe it is bad place for storing point?
+            """
+            self.point = 1
         elif value_to_set == "krol":
             self.point = 4
         elif value_to_set == "krolowa":
@@ -39,20 +46,35 @@ class ClassCard:
         else:
             self.point = value_to_set
 
-    # APPOINTMENT 2 (TODO)
     def __repr__(self):
-        return None  # what is done here?
+        """
+        TODO (ASSIGNEMENT 2):
+            - check what `__repr__` method does
+            - write proper function here to make readability better
+        """
+        return None
 
 
-#Inicjalizacja obiektu
+# Inicjalizacja obiektu
 
 # card_pik_2 = ClassCard(2, "pik")
 # print(card_pik_2.value)
 # print(card_pik_2.color)
 
-#Tworzy talie
+# Tworzy talie
 
 deck = []
+
+"""TODO (ASSIGNEMENT 3):
+    - we need **something** to keep track of the:
+        - deck
+        - croupiers cards
+        - player/s cards
+    - think if there is a suitable way to handle all this cases in reusable and
+      readable way
+    - hint: maybe some **class** will have use here? After all, each of the
+      case is just a collection of cards.
+"""
 
 for color in colors:
     for value in values:
