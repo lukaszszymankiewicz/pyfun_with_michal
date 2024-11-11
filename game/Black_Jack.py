@@ -3,6 +3,7 @@ import random
 
 colors = ["pik", "trefl", "kier", "karo"]
 values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "jopek", "krolowa", "krol", "as"]
+actions = ['hit', 'stand']
 
 """IRRELAVANT"""
 # deck = [str(color) + "_" + value for color in colors for value in values]
@@ -14,6 +15,10 @@ values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "jopek", "krolowa", "krol", "as"]
 card = "pik_jopek"
 value = card.split("_")[1]
 type = card.split("_")[0]
+
+#Action which player and croupiers can take
+
+
 
 """CLASS IMPLEMENTATION"""
 
@@ -33,8 +38,8 @@ class ClassCard:
             """
             TODO (ASSIGNEMENT 1):
                 - how to properly set points to ace card? It can be 1 or 11
-                  depending on the overall hand point.
-                - maybe it is bad place for storing point?
+                  depending on the overall hand point. ML: Player input
+                - maybe it is bad place for storing point? ML: I would create new class for storing points
             """
             self.point = 1
         elif value_to_set == "krol":
@@ -47,12 +52,18 @@ class ClassCard:
             self.point = value_to_set
 
     def __repr__(self):
-        """
-        TODO (ASSIGNEMENT 2):
-            - check what `__repr__` method does
-            - write proper function here to make readability better
-        """
-        return None
+
+        return f"ClassCard(value_to_set='{self.value}', color_to_set='{self.color}, value_to_set='{self.point})"
+
+classCard = ClassCard
+print(repr(classCard))
+
+        # """
+        # TODO (ASSIGNEMENT 2):
+        #     - check what `__repr__` method does
+        #     - ML answer: Repr method allow describe object (class instance is object). This allows us to easliy check values under object.
+        #     - write proper function here to make readability better
+        # """
 
 
 # Inicjalizacja obiektu
@@ -75,6 +86,34 @@ deck = []
     - hint: maybe some **class** will have use here? After all, each of the
       case is just a collection of cards.
 """
+
+class Classdeck:
+
+    def __init__(self, deck_count: int, croupiers_cards: int, player_cards: int):
+
+        if actions == 'hit':
+            self.newcard = 1
+        if actions == 'stand':
+            self.newcard = 0
+
+        if deck_count < 1 or deck_count > 52: #Prawdopodobnie wystarczy ze nie moze byc mniejsze od 1
+            raise ValueError
+        self.deck = 52 - croupiers_cards - player_cards
+
+        if croupiers_cards < 2:
+            raise ValueError
+        self.croupiers = 2 + self.newcard
+
+        if player_cards < 2:
+            raise ValueError
+        self.player = 2 + self.newcard
+
+
+
+
+
+
+
 
 for color in colors:
     for value in values:
