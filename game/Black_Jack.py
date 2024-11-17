@@ -40,6 +40,7 @@ class ClassCard:
                 - how to properly set points to ace card? It can be 1 or 11
                   depending on the overall hand point. ML: Player input
                 - maybe it is bad place for storing point? ML: I would create new class for storing points
+                - think: sum of points is a characteristic of a single card or full hand?
             """
             self.point = 1
         elif value_to_set == "krol":
@@ -65,10 +66,6 @@ print(repr(classCard))
 # print(card_pik_2.value)
 # print(card_pik_2.color)
 
-# Tworzy talie
-
-deck = []
-
 """TODO (ASSIGNEMENT 3):
     - we need **something** to keep track of the:
         - deck
@@ -80,8 +77,26 @@ deck = []
       case is just a collection of cards.
 """
 
-class Classdeck:
+class Hand:
+    def __init__(self):
+        self.cards = list()
 
+    def count_points(self):
+        pass
+
+    def append(self, card):
+        # TODO: is it right? Chyba nie bo nie mamy rozkminonego card? Jest wyżej zmienna ale nie mamy żadnego systemu który łaczy elementy z listy i określa co mamy w zmiennej card
+        self.cards.append(card)
+
+
+# 1) add cards to player
+# 2) what we can do with the cards?
+# 3) player input
+# 4) show cards
+
+
+# to na razie zostawiamy jak jest
+class ClassDeck:
     def __init__(self, deck_count: int, croupiers_cards: int, player_cards: int):
 
         if actions == 'hit':
@@ -89,7 +104,7 @@ class Classdeck:
         if actions == 'stand':
             self.newcard = 0
 
-        if deck_count < 1 or deck_count > 52: #Prawdopodobnie wystarczy ze nie moze byc mniejsze od 1
+        if deck_count < 1 or deck_count > 52:  # Prawdopodobnie wystarczy ze nie moze byc mniejsze od 1
             raise ValueError
         self.deck = 52 - croupiers_cards - player_cards
 
@@ -103,18 +118,64 @@ class Classdeck:
 
 
 
-
-
-
-
+deck = []
 
 for color in colors:
     for value in values:
         deck.append(ClassCard(value, color))
 
-print(deck)
-
 # tasowanie
 random.shuffle(deck)
 
-print(deck)
+losowa_karta = deck[0]
+losowa_karta = deck[-1]
+
+# pop -> deck[-1] + usuwa element + zwraca go
+
+
+# TODO: find-and-replace in PyCharm
+player_hand = Hand()
+croupier_hand = Hand()
+
+#CTRL F CTRL R z shiftem dla all ale wbudowane w pycharm i wystarczy kliknac
+#ciekawostka regex:
+# For more advanced searches, you can utilize regular expressions (regex):
+#
+#     Enable regex by clicking the corresponding checkbox in the search dialog.
+#     Regular expressions allow you to search for patterns rather than fixed strings. For example, searching for \b[A-Z]+\b will find all uppercase words.
+
+testdupa = 'sraka_okrutna_gownem'
+# Done
+
+# logic of adding a card
+# TODO: why this does not work as intended?
+random_card = deck.pop()
+player_hand.cards.append(random_card)
+player_hand.cards.append(random_card)
+print(player_hand)
+
+random_card = deck.pop()
+croupier_hand.cards.append(random_card)
+croupier_hand.cards.append(random_card)
+print(croupier_hand)
+
+# My propsition so we don't have to make x times pop with each card:
+for _ in range(2):
+    random_card = deck.pop()  # Losowanie karty z talii
+    player_hand.cards.append(random_card)  # Dodanie karty do ręki gracza
+
+print(player_hand)
+
+for _ in range(2):
+    random_card = deck.pop()
+    croupier_hand.cards.append(random_card)
+
+print(croupier_hand)
+# If I'm not as stupid as I look, we should be able to extend this loop in the future to initialize card drawing depending on the player's actions.
+# Additionally, this allows for changing values and using this code  in other games where we need to draw more cards
+
+
+# GAME STARTS!
+# GRAPHICS!
+
+# deck -> player_hand
