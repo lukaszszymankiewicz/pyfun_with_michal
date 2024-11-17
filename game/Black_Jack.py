@@ -53,17 +53,10 @@ class ClassCard:
 
     def __repr__(self):
 
-        return f"ClassCard(value_to_set='{self.value}', color_to_set='{self.color}, value_to_set='{self.point})"
+        return f"ClassCard(value_to_set='{self.value}', color_to_set='{self.color}, point_to_set='{self.point})"
 
 classCard = ClassCard
 print(repr(classCard))
-
-        # """
-        # TODO (ASSIGNEMENT 2):
-        #     - check what `__repr__` method does
-        #     - ML answer: Repr method allow describe object (class instance is object). This allows us to easliy check values under object.
-        #     - write proper function here to make readability better
-        # """
 
 
 # Inicjalizacja obiektu
