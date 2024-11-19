@@ -109,7 +109,7 @@ for card in player_hand.cards:
     print(card, end=" ")
 
 # TODO: print points:
-# a) ALGORITHM!
+# 0) ALGORITHM!
 # a) where points should be calculated?
 # b) what about aces?
 # c) where to print it?
