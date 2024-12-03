@@ -1,5 +1,7 @@
 import random
 
+from pycodestyle import continued_indentation
+
 colors = ["♦", "♣", "♠︎", "♥"]
 values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 actions = ["hit", "stand"]
@@ -36,7 +38,10 @@ class Hand:
         self.cards = list()
 
     def count_points(self):
-        pass
+        # TODO: write this!
+        # for card in self.cards:
+        #     result += cos
+        return 19
 
     def append(self, card):
         self.cards.append(card)
@@ -87,7 +92,6 @@ for _ in range(2):
     random_card = deck.pop()  # Losowanie karty z talii
     player_hand.cards.append(random_card)  # Dodanie karty do ręki gracza
 
-
 for _ in range(2):
     random_card = deck.pop()
     croupier_hand.cards.append(random_card)
@@ -95,21 +99,52 @@ for _ in range(2):
 # Remember end and test yourself - ML
 
 print("croupier: ", end="")
+print(f"POINTS: {croupier_hand.count_points()}")
 for card in croupier_hand.cards:
     print(card, end=" ")
 
 print("\nplayer: ", end="")
+print(f"POINTS: {player_hand.count_points()}")
 for card in player_hand.cards:
     print(card, end=" ")
 
+
+# croupies logic
+# point < 17 -> Hit
+# points >=17 -> Pass
+
+# madry komentarz tutaj
+if croupier_hand.count_points() < 17:
+    card_hit = deck.pop()
+    croupier_hand.cards.append(card_hit)
+
+
+####################
+# win or lose
+if player_hand.count_points() > 21:
+    print('player busted, you lose')
+    break
+elif croupier_hand.count_points() > 21:
+    print('croupier busted, you win')
+    break
+
+# TODO:
+# check if both players passed
+# when game should be continued?
+
+
+
+#komentarze dla ludzi nie dla komputerów!!!
+while True:
+    pass
+    # give 2 cards
+    # print
+    # input (Hit or Stand)
+    # croupier
+    # win or lose (break loop if lose)
+
+
 """
-TODO: print points:
-1) find and write and algorithm to calculate points for hand!
-2) find proper place to store and call the algorithm
-3) remember about ace card, it can be 11 or 1 point, depending on what is
-better
-4) find the proper place to print the points (for visual reasons)
-5) DO NOT ADD GAME LOGIC **YET**!
 
 
 RESOURCES:
