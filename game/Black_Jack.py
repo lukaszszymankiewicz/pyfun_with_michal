@@ -109,7 +109,7 @@ for card in player_hand.cards:
     print(card, end=" ")
 
 
-# croupies logic
+# this is the croupies logic
 # point < 17 -> Hit
 # points >=17 -> Pass
 
@@ -118,26 +118,33 @@ if croupier_hand.count_points() < 17:
     card_hit = deck.pop()
     croupier_hand.cards.append(card_hit)
 
-
-####################
 # win or lose
 if player_hand.count_points() > 21:
     print('player busted, you lose')
-    break
+
 elif croupier_hand.count_points() > 21:
     print('croupier busted, you win')
-    break
 
 # TODO:
 # check if both players passed
 # when game should be continued?
 
+player_input = input("\nP[ass] or H[it]?")
+
+if player_input != ("H[it]?"):
+    player_input == ("\nP[ass]")
 
 
-#komentarze dla ludzi nie dla komputerów!!!
+    print(player_input)
+
+
+# comments are for humans **NOT** computers
 while True:
     pass
+    # ONLY AT THE BEGINNING:
     # give 2 cards
+
+    # MAIN LOOP:
     # print
     # input (Hit or Stand)
     # croupier
@@ -145,10 +152,7 @@ while True:
 
 
 """
-
-
 RESOURCES:
 a) https://stackoverflow.com/questions/14017341/how-to-calculate-the-score-for-blackjack-game-where-am-i-going-wrong
 b) https://stackoverflow.com/questions/2402483/calculating-hand-values-in-blackjack
-
 """
