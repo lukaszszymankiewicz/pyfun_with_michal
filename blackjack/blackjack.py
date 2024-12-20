@@ -1,13 +1,16 @@
 import random
 
-from pycodestyle import continued_indentation
-
 colors = ["♦", "♣", "♠︎", "♥"]
 values = [2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K", "A"]
 actions = ["hit", "stand"]
 
-
+# TODO: move it
 class ClassCard:
+
+    value = None
+    color = None
+    point = 0
+
     def __init__(self, value_to_set: int, color_to_set: str):
 
         if value_to_set not in values:
@@ -19,7 +22,7 @@ class ClassCard:
         self.color = color_to_set
 
         if value_to_set == "A":
-            self.point = 1
+            self.point = 11
         elif value_to_set == "K":
             self.point = 4
         elif value_to_set == "Q":
@@ -32,21 +35,38 @@ class ClassCard:
     def __repr__(self):
         return f"{str(self.value)}{self.color}"
 
-
+# TODO: move it
 class Hand:
     def __init__(self):
         self.cards = list()
 
     def count_points(self):
-        # TODO: write this!
-        # for card in self.cards:
-        #     result += cos
-        return 19
+        result = 0
+        aces = 0
+
+        # easy
+        for c in self.cards:
+            # '+=' is sum to the previous value
+            result += c.point
+
+            if c.value == "A":
+                aces += 1
+
+        # TODO: tip: maybe use 'range' somehow?
+        for n in range(aces):
+            # cos tu trzeba dopisac, tylko co?
+
+
+        # hard
+        if result > 21:
+            result -= 10
+
+        return result
 
     def append(self, card):
         self.cards.append(card)
 
-
+# TODO: move it
 class ClassDeck:
     def __init__(
         self,
@@ -74,7 +94,7 @@ class ClassDeck:
             raise ValueError
         self.player = 2 + self.newcard
 
-
+# TODO: move it (but where?)
 deck = []
 
 for color in colors:
@@ -87,6 +107,7 @@ random.shuffle(deck)
 player_hand = Hand()
 croupier_hand = Hand()
 
+# TODO: move it (but where?)
 # My propsition so we don't have to make x times pop with each card:
 for _ in range(2):
     random_card = deck.pop()  # Losowanie karty z talii
